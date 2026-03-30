@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 )
 
+// GetCurrDir returns the current working directory as a string. If there is an error while getting the current directory, it prints the error and panics.
 func GetCurrDir() string {
 	path, err := os.Getwd()
 	if err != nil {
@@ -15,6 +16,12 @@ func GetCurrDir() string {
 	return path
 }
 
+// PrintTree recursively prints the directory structure starting from startDir.
+//
+// Parameters:
+// - startDir: The directory from which to start printing the tree.
+// - prefix: A string used to format the output, indicating the level of the tree.
+// - skipDirs: A map of directory names to skip when printing the tree.
 func PrintTree(startDir string, prefix string, skipDirs map[string]bool) {
 	entries, err := os.ReadDir(startDir)
 	if err != nil {

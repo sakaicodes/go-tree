@@ -1,21 +1,15 @@
 package main
 
+import (
+	"os"
+
+	"github.com/sakaicodes/tree/cmd"
+)
+
 func main() {
-	defaultSkipDirs := map[string]bool{
-		".git":         true,
-		"node_modules": true,
-		".DS_Store":    true,
+	if len(os.Args) < 2 {
+		println("Usage: go-tree [directory]")
+		os.Exit(1)
 	}
-
-	//TODO: Add command line flag to skip default directories
-	skip := true // Set to true to skip default directories
-
-	skipDirs := make(map[string]bool)
-	if skip {
-		skipDirs = defaultSkipDirs
-	}
-
-	start_dir := GetCurrDir()
-
-	PrintTree(start_dir, "", skipDirs)
+	cmd.DisplayTree()
 }
