@@ -6,6 +6,7 @@ import (
 	"github.com/sakaicodes/tree/internal"
 )
 
+// DisplayTree is the main function that handles the logic for displaying the directory tree. It parses command-line flags and arguments, determines the directory to display, and calls the PrintTree function from the internal package to print the directory structure.
 func DisplayTree() {
 	all := flag.Bool("all", false, "Include all files and directories (including hidden ones)")
 	flag.Parse()
